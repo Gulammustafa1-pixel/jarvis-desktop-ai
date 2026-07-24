@@ -14,51 +14,129 @@ from tools.browser import (
     open_linkedin,
 )
 
+from tools.files import (
+    create_folder,
+    open_desktop,
+    open_downloads,
+    open_documents,
+    open_pictures,
+    open_music,
+    open_videos,
+    open_this_pc,
+)
+
+from tools.system import (
+    shutdown_pc,
+    restart_pc,
+    sleep_pc,
+    lock_pc,
+    sign_out,
+    volume_up,
+    volume_down,
+    mute_volume,
+)
+
 
 def process_message(message):
 
     command = message.lower().strip()
 
-    print("Command:", command)
+    # ---------------- OPEN COMMANDS ----------------
 
-    # ---------- Apps ----------
+    if "open" in command:
 
-    if "open chrome" in command:
-        print("Opening Chrome")
-        return open_chrome()
+        # Apps
+        if "chrome" in command:
+            return open_chrome()
 
-    elif "open vscode" in command or "open vs code" in command:
-        print("Opening VS Code")
-        return open_vscode()
+        elif "github" in command:
+            return open_github()
 
-    elif "open notepad" in command:
-        print("Opening Notepad")
-        return open_notepad()
+        elif "youtube" in command:
+            return open_youtube()
 
-    elif "open calculator" in command or "open calc" in command:
-        print("Opening Calculator")
-        return open_calculator()
+        elif "linkedin" in command:
+            return open_linkedin()
 
-    # ---------- Browser ----------
+        elif "vs code" in command or "vscode" in command:
+            return open_vscode()
+
+        elif "notepad" in command:
+            return open_notepad()
+
+        elif "calculator" in command or "calc" in command:
+            return open_calculator()
+
+        # Folders
+        elif "desktop" in command:
+            return open_desktop()
+
+        elif "downloads" in command:
+            return open_downloads()
+
+        elif "documents" in command:
+            return open_documents()
+
+        elif "pictures" in command:
+            return open_pictures()
+
+        elif "music" in command:
+            return open_music()
+
+        elif "videos" in command:
+            return open_videos()
+
+        elif "this pc" in command or "file explorer" in command:
+            return open_this_pc()
+
+    # ---------------- SYSTEM COMMANDS ----------------
+
+    elif "shutdown" in command:
+        return shutdown_pc()
+
+    elif "restart" in command:
+        return restart_pc()
+
+    elif "sleep" in command:
+        return sleep_pc()
+
+    elif "lock" in command:
+        return lock_pc()
+
+    elif "sign out" in command or "logout" in command:
+        return sign_out()
+
+    elif "volume up" in command:
+        return volume_up()
+
+    elif "volume down" in command:
+        return volume_down()
+
+    elif "mute" in command:
+        return mute_volume()
+
+    # ---------------- GOOGLE SEARCH ----------------
 
     elif command.startswith("search "):
-        query = message[7:]
-        print("Searching:", query)
+
+        query = message[7:].strip()
+
+        if not query:
+            return "Please enter something to search."
+
         return google_search(query)
 
-    elif "open youtube" in command:
-        print("Opening YouTube")
-        return open_youtube()
+    # ---------------- CREATE FOLDER ----------------
 
-    elif "open github" in command:
-        print("Opening GitHub")
-        return open_github()
+    elif command.startswith("create folder"):
 
-    elif "open linkedin" in command:
-        print("Opening LinkedIn")
-        return open_linkedin()
+        folder_name = message[len("create folder"):].strip()
 
-    # ---------- AI ----------
+        if not folder_name:
+            return "Please enter a folder name."
 
-    print("Sending to Ollama...")
+        return create_folder(folder_name)
+
+    # ---------------- AI CHAT ----------------
+
     return ask_ai(message)
