@@ -1,35 +1,39 @@
-# 🤖 Jarvis Desktop AI
+## 🤖 Jarvis Desktop AI Assistant
 
-An intelligent desktop AI assistant built with **Python**, **PySide6**, and **Ollama**.  
-Jarvis can chat using a local LLM and automate common desktop tasks such as opening applications and browsing the web.
+An intelligent desktop AI assistant built with Python that responds to the wake word **"Hey Jarvis"** and performs voice-controlled tasks. The assistant runs in the background, listens for the wake word, processes voice commands, and provides spoken responses using AI.
 
----
+### ✨ Features
 
-## ✨ Features
+- 🎙️ Wake Word Detection ("Hey Jarvis")
+- 🧠 AI-powered conversations using Ollama
+- 🗣️ Speech Recognition
+- 🔊 Text-to-Speech Responses
+- 🌐 Open Chrome, GitHub, YouTube, and LinkedIn
+- 📂 Open Desktop, Downloads, Documents, and other folders
+- 🔍 Google Search via voice commands
+- 📁 Create folders using voice
+- ⚡ Background voice assistant service
+- 🚀 Automatic startup support with Windows
 
-- 💬 AI Chat using Ollama (Llama 3.2)
-- 🌐 Google Search
-- 🌍 Open GitHub
-- ▶️ Open YouTube
-- 💼 Open LinkedIn
-- 🖥️ Open Google Chrome
-- 💻 Open VS Code
-- 📝 Open Notepad
-- 🧮 Open Calculator
-- 🖼️ Modern Desktop GUI (PySide6)
-
----
-
-## 🛠️ Tech Stack
+### 🛠️ Technologies Used
 
 - Python
-- PySide6
+- OpenWakeWord
 - Ollama
-- Llama 3.2
-- Webbrowser
-- PyAutoGUI
-- Psutil
+- SpeechRecognition
+- PyAudio
+- pyttsx3
+- NumPy
+- ONNX Runtime
 
----
+### 🚀 Example Voice Commands
 
-## 📂 Project Structure
+- "Hey Jarvis"
+- "Open Chrome"
+- "Open GitHub"
+- "Open YouTube"
+- "Search Machine Learning"
+- "Create folder AI Project"
+- "Open Downloads"
+
+> More intelligent desktop automation and AI features are under development.
